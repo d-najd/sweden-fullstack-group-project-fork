@@ -1,0 +1,23 @@
+{
+	"name": "sweden-fullstack-group-project",
+	"private": true,
+	"version": "1.0.0",
+	"description": "",
+	"author": "",
+	"workspaces": [
+		"frontend",
+		"backend"
+	],
+	"scripts": {
+		"dev": "npm run dev:backend & npm run dev:frontend",
+		"dev:backend": "npm run dev -w backend",
+		"dev:frontend": "npm run dev -w frontend",
+		"format": "prettier --write ."
+	},
+	"lint-staged": {
+		"**/*": "prettier --write ."
+	},
+	"devDependencies": {
+		"prettier": "^3.8.1"
+	}
+}
