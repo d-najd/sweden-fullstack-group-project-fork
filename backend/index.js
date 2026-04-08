@@ -7,4 +7,4 @@ app.get("/api", (req, res) => {
 	res.json({ message: "API working" })
 })
 
-app.listen(3000, () => console.log("Server running"))
+app.listen(3000, () => console.log("Server running on: localhost:3000"))

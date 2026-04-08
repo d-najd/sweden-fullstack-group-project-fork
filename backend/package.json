@@ -8,9 +8,12 @@
 	"main": "index.js",
 	"keywords": [],
 	"scripts": {
-		"dev": "node index.js"
+		"dev": "ts-node index.js"
 	},
 	"dependencies": {
 		"express": "^5.2.1"
+	},
+	"devDependencies": {
+		"ts-node": "^10.9.2"
 	}
 }
