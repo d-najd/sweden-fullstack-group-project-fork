@@ -3,9 +3,12 @@ import reactLogo from "@/assets/react.svg"
 import viteLogo from "@/assets/vite.svg"
 import heroImg from "@/assets/hero.png"
 import "./index.css"
+import useCounterStore from "./stores/counter"
+import { Link } from "react-router-dom"
 
 export default function WelcomePage() {
 	const [count, setCount] = useState(0)
+	const { count: zustandCount, increment } = useCounterStore()
 
 	return (
 		<>
@@ -38,6 +41,11 @@ export default function WelcomePage() {
 				>
 					Count is {count}
 				</button>
+
+				<button className="counter" onClick={() => increment()}>
+					Zustand count is {zustandCount}
+				</button>
+				<Link to="/dashboard">Test Zustand (press go back)</Link>
 			</section>
 
 			<div className="ticks"></div>
