@@ -3,7 +3,7 @@ import { Umzug, SequelizeStorage } from "umzug"
 import { Sequelize } from "sequelize"
 import fs from "fs/promises"
 import path from "path"
-import { config } from "../config/database.ts"
+import { config } from "@/config/database"
 
 const sequelize = new Sequelize(config)
 
