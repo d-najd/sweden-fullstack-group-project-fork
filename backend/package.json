@@ -8,12 +8,15 @@
 	"main": "index.js",
 	"keywords": [],
 	"scripts": {
-		"dev": "ts-node index.js"
+		"dev": "ts-node index.ts"
 	},
 	"dependencies": {
-		"express": "^5.2.1"
+		"express": "^5.2.1",
+		"mysql2": "^3.22.0",
+		"typia": "^12.0.2"
 	},
 	"devDependencies": {
+		"@types/express": "^5.0.6",
 		"ts-node": "^10.9.2"
 	}
 }
