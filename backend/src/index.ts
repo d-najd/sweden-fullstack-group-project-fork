@@ -19,6 +19,6 @@ app.get("/api", (_req, res) => {
 
 app.listen(3000, () => console.log("Server running on: localhost:3000"))
 
-app.use("/users", usersRouter)
+app.use("/user", usersRouter)
 
 export default app

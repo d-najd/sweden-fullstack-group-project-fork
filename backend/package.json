@@ -9,7 +9,8 @@
 	"keywords": [],
 	"scripts": {
 		"dev": "nodemon --exec tsx src/index.ts",
-		"dev:no-restart": "tsc src/index.ts"
+		"dev:no-restart": "tsc src/index.ts",
+		"prepare": "ts-patch install"
 	},
 	"dependencies": {
 		"express": "^5.2.1",
@@ -21,6 +22,8 @@
 	"devDependencies": {
 		"@types/express": "^5.0.6",
 		"nodemon": "^3.1.14",
-		"tsx": "^4.21.0"
+		"ts-patch": "^3.3.0",
+		"tsx": "^4.21.0",
+		"typescript": "~5.9.3"
 	}
 }

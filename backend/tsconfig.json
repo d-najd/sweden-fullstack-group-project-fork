@@ -5,7 +5,15 @@
 		"paths": {
 			"@/*": ["./src/*"],
 			"@/shared/*": ["../shared/*"]
-		}
+		},
+		"plugins": [
+			{
+				"transform": "typia/lib/transform"
+			}
+		],
+		"skipLibCheck": true,
+		"strictNullChecks": true,
+		"strict": true
 	},
 	"include": ["src", "../shared"]
 }

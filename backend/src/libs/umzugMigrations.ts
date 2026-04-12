@@ -15,6 +15,9 @@ export const config: Options = {
 	password: "sweden-fullstack-group-project",
 	database: "sweden-fullstack-group-project",
 	dialect: "mysql",
+	dialectOptions: {
+		multipleStatements: true,
+	},
 }
 
 const sequelize = new Sequelize(config)

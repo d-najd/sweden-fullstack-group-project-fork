@@ -1,0 +1,43 @@
+import typia from "typia"
+import userRepository from "./user.repository"
+import UserDto from "@/shared/types/user/user.dto"
+import UserCreate from "@/shared/types/user/user.create"
+import UserUpdate from "@/shared/types/user/user.update"
+
+class UserService {
+	async getAllUsers(): Promise<UserDto[]> {
+		return (await userRepository.findAll()).map((o) =>
+			typia.assert<UserDto>(o),
+		)
+	}
+
+	async getUserByUsername(username: string): Promise<UserDto> {
+		const user = typia.assert<UserDto>(
+			await userRepository.findByUsername(username),
+		)
+		if (!user) {
+			throw new Error("User not found")
+		}
+		return user
+	}
+
+	async createUser(user: UserCreate): Promise<string> {
+		return userRepository.create(user)
+	}
+
+	async updateUser(username: string, user: UserUpdate): Promise<void> {
+		const updated = await userRepository.update(username, user)
+		if (!updated) {
+			throw new Error("User not found or no changes applied")
+		}
+	}
+
+	async deleteUser(username: string): Promise<void> {
+		const deleted = await userRepository.delete(username)
+		if (!deleted) {
+			throw new Error("User not found")
+		}
+	}
+}
+
+export default new UserService()

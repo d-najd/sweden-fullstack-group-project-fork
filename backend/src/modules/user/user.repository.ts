@@ -1,0 +1,53 @@
+import db from "@/config/database"
+import UserEntity from "./types/user.entity"
+import { ResultSetHeader, RowDataPacket } from "mysql2"
+import typia from "typia"
+import UserCreate from "@/shared/types/user/user.create"
+import UserUpdate from "@/shared/types/user/user.update"
+
+const tableName = "user_example"
+
+class UserRepository {
+	async findAll(): Promise<UserEntity[]> {
+		const [rows] = await db.query<RowDataPacket[]>(
+			`SELECT * FROM ${tableName}`,
+		)
+		return rows.map((row) => typia.assert<UserEntity>(row))
+	}
+
+	async findByUsername(username: string): Promise<UserEntity | null> {
+		const [rows] = await db.query<RowDataPacket[]>(
+			`SELECT * FROM ${tableName} WHERE username = ?`,
+			[username],
+		)
+
+		if (rows.length === 0) return null
+		return typia.assert<UserEntity>(rows[0])
+	}
+
+	async create(user: UserCreate) {
+		await db.query<ResultSetHeader>(`INSERT INTO ${tableName} SET ?`, user)
+
+		return user.username
+	}
+
+	async update(username: string, user: UserUpdate) {
+		const [result] = await db.query<ResultSetHeader>(
+			`UPDATE ${tableName} SET ? WHERE id username = ?`,
+			[user, username],
+		)
+
+		return result.affectedRows > 0
+	}
+
+	async delete(username: string) {
+		const [result] = await db.query<ResultSetHeader>(
+			`DELETE FROM ${tableName} WHERE username = ?`,
+			[username],
+		)
+
+		return result.affectedRows > 0
+	}
+}
+
+export default new UserRepository()
