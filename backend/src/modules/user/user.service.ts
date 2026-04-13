@@ -19,15 +19,18 @@ class UserService {
 		return typia.misc.assertPrune<UserDto>(user)
 	}
 
-	async createUser(user: UserCreate): Promise<string> {
-		return userRepository.create(user)
+	async createUser(user: UserCreate): Promise<UserDto> {
+		const newUsername = await userRepository.create(user)
+		return await this.getUserByUsername(newUsername)
 	}
 
-	async updateUser(username: string, user: UserUpdate): Promise<void> {
+	async updateUser(username: string, user: UserUpdate): Promise<UserDto> {
 		const updated = await userRepository.update(username, user)
 		if (!updated) {
 			throw new Error("User not found or no changes applied")
 		}
+
+		return await this.getUserByUsername(user.username)
 	}
 
 	async deleteUser(username: string): Promise<void> {

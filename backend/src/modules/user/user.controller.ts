@@ -33,9 +33,8 @@ class UserController {
 		try {
 			// Validate and cast request body using Typia
 			const body = typia.misc.assertPrune<UserCreate>(req.body)
-			const newUsername = await userService.createUser(body)
+			const newUser = await userService.createUser(body)
 
-			const newUser = await userService.getUserByUsername(newUsername)
 			res.status(201).json(newUser)
 		} catch (error) {
 			console.error(error)
@@ -48,8 +47,7 @@ class UserController {
 			const username = req.params.username as string
 			const body = typia.misc.assertPrune<UserUpdate>(req.body)
 
-			await userService.updateUser(username, body)
-			const newUser = await userService.getUserByUsername(body.username)
+			const newUser = await userService.updateUser(username, body)
 			return res.status(200).json(newUser)
 		} catch (error) {
 			console.error(error)

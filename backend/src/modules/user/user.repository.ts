@@ -54,6 +54,23 @@ class UserRepository {
 
 		return result.affectedRows > 0
 	}
+
+	// If using complex query with multiple fields make it transactional, I.E if one command fails rollback so we are not in invalid state like so
+	// async example() {
+	//    const conn = await db.getConnection()
+	//    try {
+	//       await conn.beginTransaction()
+	//
+	//       // modifications to tables
+	//
+	//       await conn.commit()
+	//    } catch (err) {
+	//       await conn.rollback()
+	//       throw err
+	//    } finally {
+	//       conn.release()
+	//    }
+	// }
 }
 
 export default new UserRepository()

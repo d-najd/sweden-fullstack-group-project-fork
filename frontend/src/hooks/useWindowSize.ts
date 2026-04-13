@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 /**
  * Gets the size of the current window
  */
-function useWindowSize() {
+export default function useWindowSize() {
 	const [size, setSize] = useState({
 		width: window.innerWidth,
 		height: window.innerHeight,
