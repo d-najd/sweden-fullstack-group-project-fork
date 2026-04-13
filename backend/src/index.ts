@@ -2,6 +2,10 @@ import express from "express"
 import usersRouter from "@/modules/user/user.routes"
 import db from "@/config/database"
 import umzug from "./libs/umzugMigrations"
+import envConfig, { init as initEnvConfig } from "./config/env"
+
+initEnvConfig()
+console.log(envConfig)
 
 // Ping the db to check if it can connect
 await db.execute("SELECT 1")
