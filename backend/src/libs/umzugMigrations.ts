@@ -8,12 +8,13 @@ import {
 import { Options, Sequelize } from "sequelize"
 import fs from "fs/promises"
 import path from "path"
+import envConfig from "@/config/env"
 
 export const config: Options = {
-	host: "localhost",
-	username: "sweden-fullstack-group-project",
-	password: "sweden-fullstack-group-project",
-	database: "sweden-fullstack-group-project",
+	host: envConfig.databaseHost,
+	username: envConfig.username,
+	password: envConfig.password,
+	database: envConfig.database,
 	dialect: "mysql",
 	dialectOptions: {
 		multipleStatements: true,

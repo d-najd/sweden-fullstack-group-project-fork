@@ -23,11 +23,6 @@ class UserRepository {
 			[username],
 		)
 
-		console.log(`USERNAME ${username}`)
-
-		console.log("FOUND ")
-		console.log("TEST" + rows)
-
 		if (rows.length === 0) return null
 		return typia.misc.assertPrune<UserEntity>(
 			rows[0] as unknown as UserEntity,
@@ -43,13 +38,11 @@ class UserRepository {
 	}
 
 	async update(username: string, user: UserUpdate) {
-		console.log(`USERNAME ${username}`)
 		const [result] = await db.query<ResultSetHeader>(
 			`UPDATE ${tableName} SET ? WHERE username = ?`,
 			[user, username],
 		)
 
-		console.log(`USERNAME 2${username}`)
 		return result.affectedRows > 0
 	}
 

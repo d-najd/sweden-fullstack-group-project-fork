@@ -8,6 +8,8 @@
 		/* Bundler mode */
 		"jsx": "react-jsx",
 
+		"rootDir": "..",
+		"baseUrl": ".",
 		/* imports with @ */
 		"paths": {
 			"@/*": ["./src/*"],

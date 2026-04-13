@@ -2,10 +2,7 @@ import express from "express"
 import usersRouter from "@/modules/user/user.routes"
 import db from "@/config/database"
 import umzug from "./libs/umzugMigrations"
-import envConfig, { init as initEnvConfig } from "./config/env"
-
-initEnvConfig()
-console.log(envConfig)
+import envConfig from "./config/env"
 
 // Ping the db to check if it can connect
 await db.execute("SELECT 1")
@@ -17,11 +14,9 @@ const app = express()
 
 app.use(express.json())
 
-app.get("/api", (_req, res) => {
-	res.json({ message: "API working" })
-})
-
-app.listen(3000, () => console.log("Server running on: localhost:3000"))
+app.listen(envConfig.port, () =>
+	console.log(`Server running on: localhost:${envConfig.port}`),
+)
 
 app.use("/user", usersRouter)
 
