@@ -3,6 +3,7 @@ import usersRouter from "@/modules/user/user.routes"
 import db from "@/config/database"
 import umzug from "./libs/umzugMigrations"
 import envConfig from "./config/env"
+import cors from "cors"
 
 // Ping the db to check if it can connect
 await db.execute("SELECT 1")
@@ -12,6 +13,7 @@ await umzug.up()
 
 const app = express()
 
+app.use(cors())
 app.use(express.json())
 
 app.listen(envConfig.port, () =>

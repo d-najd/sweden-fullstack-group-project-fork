@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import heroImg from "@/assets/hero.png"
 import useCounterStore from "./stores/counter"
 import { ButtonOutlinedOnHover } from "@/components/ButtonOutlinedOnHover"
@@ -6,11 +6,17 @@ import { Box, Button, Center, Code, Separator, VStack } from "@chakra-ui/react"
 import { useNavigate } from "react-router-dom"
 import ReactIcon from "./components/ReactIcon"
 import { ViteIcon } from "./components/ViteIcon"
+import useUserStore from "./stores/userStore"
 
 export default function WelcomePage() {
 	const [count, setCount] = useState(0)
 	const { count: zustandCount, increment } = useCounterStore()
 	const navigate = useNavigate()
+	const { users, getUsers } = useUserStore()
+
+	useEffect(() => {
+		getUsers()
+	}, [getUsers])
 
 	return (
 		<Box minH="100vh" minW="100vw" bg="#16171d">
@@ -63,6 +69,12 @@ export default function WelcomePage() {
 					>
 						Test Zustand (press go back)
 					</Button>
+					<h1>First user username</h1>
+					{users.map((user) => (
+						<p key={user.username}>
+							{user.username} - {user.gmail}
+						</p>
+					))}
 				</VStack>
 			</Center>
 		</Box>
