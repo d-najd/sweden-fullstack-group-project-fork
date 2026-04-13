@@ -12,6 +12,7 @@
 			}
 		],
 		"rootDirs": [".", "../shared/"],
+		"rootDir": "..",
 		"outDir": "./dist",
 		"skipLibCheck": true,
 		"strictNullChecks": true,
