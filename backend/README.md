@@ -6,7 +6,7 @@
 
 - Web framework
 
-### [mysql2](https://sidorares.github.io/node-mysql2/docs)
+### [Mysql2](https://sidorares.github.io/node-mysql2/docs)
 
 - Mysql adapter
 
@@ -16,7 +16,7 @@
   unnecessary fields which then allows most queries to be done with just passing
   the parsed object instead of manually settings each field
 
-### umzug
+### [Umzug](https://github.com/sequelize/umzug)
 
 - Used for database migrations, uses custom adapter to make it work like flyway
 

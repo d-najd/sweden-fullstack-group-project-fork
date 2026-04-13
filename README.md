@@ -28,7 +28,7 @@ root
 
 [Frontend README](/frontend/README.md)
 [Backend README](/backend/README.md)
-[C/CONTRIBUTING.md](./CONTRIBUTING.md)
+[CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ## Getting started
 
