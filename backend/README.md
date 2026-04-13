@@ -61,3 +61,4 @@ src/modules/user
 ```
 
 [Shared README](../shared/README.md)
+[Migrations README](./src/migrations/README.md)
